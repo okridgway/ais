@@ -2,7 +2,7 @@
 <block>
   <name>DebugME</name>
   <key>AISTX_DebugME</key>
-  <category>AISTX</category>
+  <category>[AISTX]</category>
   <import>import AISTX</import>
   <make>AISTX.DebugME($type.size)</make>
 	<param>

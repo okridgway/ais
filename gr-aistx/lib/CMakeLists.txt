@@ -29,6 +29,12 @@ list(APPEND AISTX_sources
     Build_Frame_impl.cc
     DebugME_impl.cc )
 
+    set(AISTX_sources "${AISTX_sources}" PARENT_SCOPE)
+    if(NOT AISTX_sources)
+        MESSAGE(STATUS "No C++ sources... skipping lib/")
+        return()
+    endif(NOT AISTX_sources)
+
 add_library(gnuradio-AISTX SHARED ${AISTX_sources})
 target_link_libraries(gnuradio-AISTX ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
 set_target_properties(gnuradio-AISTX PROPERTIES DEFINE_SYMBOL "gnuradio_AISTX_EXPORTS")
@@ -36,11 +42,8 @@ set_target_properties(gnuradio-AISTX PROPERTIES DEFINE_SYMBOL "gnuradio_AISTX_EX
 ########################################################################
 # Install built library files
 ########################################################################
-install(TARGETS gnuradio-AISTX
-    LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file
-    ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
-    RUNTIME DESTINATION bin              # .dll file
-)
+include(GrMiscUtils)
+GR_LIBRARY_FOO(gnuradio-AISTX RUNTIME_COMPONENT "AISTX_runtime" DEVEL_COMPONENT "AISTX_devel")
 
 ########################################################################
 # Build and register unit test
@@ -65,3 +68,10 @@ target_link_libraries(
 )
 
 GR_ADD_TEST(test_AISTX test-AISTX)
+
+########################################################################
+# Print summary
+########################################################################
+message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
+

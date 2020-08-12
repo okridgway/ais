@@ -2,7 +2,7 @@
 <block>
   <name>AIS Frame Builder</name>
   <key>AISTX_Build_Frame</key>
-  <category>AISTX</category>
+  <category>[AISTX]</category>
   <import>import AISTX</import>
   <make>AISTX.Build_Frame($sentence, $repeat, $enable_NRZI)</make>
     <param>

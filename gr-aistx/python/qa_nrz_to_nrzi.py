@@ -19,6 +19,7 @@
 # 
 
 from gnuradio import gr, gr_unittest
+from gnuradio import blocks
 import AISTX_swig as AISTX
 
 class qa_nrz_to_nrzi (gr_unittest.TestCase):

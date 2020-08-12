@@ -22,7 +22,7 @@
 This is the GNU Radio AISTX module. Place your Python package
 description here (python/__init__.py).
 '''
-
+'''
 # ----------------------------------------------------------------
 # Temporary workaround for ticket:181 (swig+python problem)
 import sys
@@ -52,3 +52,13 @@ from AISTX_swig import *
 if _RTLD_GLOBAL != 0:
     sys.setdlopenflags(_dlopenflags)      # Restore original flags
 # ----------------------------------------------------------------
+'''
+# import swig generated symbols into the AISTX namespace
+try:
+	# this might fail if the module is python-only
+	from AISTX_swig import *
+except ImportError:
+	pass
+
+# import any pure python here
+#

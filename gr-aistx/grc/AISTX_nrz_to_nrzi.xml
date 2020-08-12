@@ -1,7 +1,7 @@
 <block>
   <name>Nrz to nrzi</name>
   <key>AISTX_nrz_to_nrzi</key>
-  <category>AISTX</category>
+  <category>[AISTX]</category>
   <import>import AISTX</import>
   <make>AISTX.nrz_to_nrzi()</make>
   <sink>
